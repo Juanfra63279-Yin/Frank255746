@@ -1,1 +1,39 @@
-<h1>Hola Mundo</h1>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio - Entornos Visuales</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body class="bg-slate-50 min-h-screen flex flex-col items-center justify-center p-4">
+
+    <div class="max-w-md w-full bg-white rounded-2xl shadow-xl p-8 text-center" x-data="{ open: false }">
+        <div class="w-24 h-24 bg-blue-500 rounded-full mx-auto mb-4 flex items-center justify-center text-white text-3xl font-bold">JS</div>
+        <h1 class="text-2xl font-bold text-slate-800">Ing. en Software</h1>
+        <p class="text-slate-600 mt-2">Apasionado por la tecnología, la escalabilidad y el desarrollo de sistemas robustos. Estudiante de La Salle (Matrícula: 255746).</p>
+        
+        <button @click="open = true" class="mt-6 w-full bg-slate-800 text-white py-3 rounded-lg hover:bg-slate-700 transition font-semibold">
+            Ver Proyectos 3er Parcial
+        </button>
+
+        <div x-show="open" class="fixed inset-0 bg-black/50 flex items-center justify-center p-4" x-cloak>
+            <div @click.away="open = false" class="bg-white rounded-xl p-6 w-full max-w-sm shadow-2xl">
+                <h2 class="text-lg font-bold text-blue-600 mb-4">Programación orientada a Entornos visuales</h2>
+                <div class="space-y-3">
+                    <a href="/3erparcialtarea1.html" class="block w-full py-2 border rounded-lg hover:bg-blue-50">Tarea 1</a>
+                    <a href="/3erparcialtarea2.html" class="block w-full py-2 border rounded-lg hover:bg-blue-50">Tarea 2</a>
+                    <a href="/3erparcialexamenpractico.html" class="block w-full py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Examen Práctico</a>
+                </div>
+                <button @click="open = false" class="mt-4 text-sm text-slate-400">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="mt-8 text-slate-400 text-sm">
+        InnovateX 3er parcial
+    </footer>
+
+</body>
+</html>
