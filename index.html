@@ -2,38 +2,264 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portafolio - Entornos Visuales</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <title>Modernización La Moderna</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 15mm 15mm;
+            background-color: #1a1a1a;
+        }
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            color: #fdfaf5;
+            background-color: #1a1a1a;
+            margin: 0;
+            padding: 20px;
+            font-size: 10pt;
+        }
+        h1 {
+            color: #c5a059;
+            font-size: 22pt;
+            text-align: center;
+            text-transform: uppercase;
+            border-bottom: 2px solid #5c0a16;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #c5a059;
+            font-size: 14pt;
+            border-left: 4px solid #5c0a16;
+            padding-left: 8px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        p, li {
+            line-height: 1.5;
+            color: #d0d0d0;
+            margin-bottom: 6px;
+        }
+        ul {
+            margin-top: 5px;
+            padding-left: 20px;
+        }
+        .bold {
+            color: #ffffff;
+            font-weight: bold;
+        }
+        .accent {
+            color: #c5a059;
+        }
+        .table-layout {
+            display: table;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        .table-row {
+            display: table-row;
+        }
+        .table-cell {
+            display: table-cell;
+            width: 50%;
+            vertical-align: top;
+            padding-right: 15px;
+        }
+        .team-table {
+            display: table;
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 10px;
+        }
+        .team-row {
+            display: table-row;
+        }
+        .team-cell {
+            display: table-cell;
+            width: 33.3%;
+            background-color: #2c3441;
+            padding: 12px;
+            border: 1px solid #c5a059;
+            text-align: center;
+            border-radius: 4px;
+            page-break-inside: avoid;
+        }
+        .team-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 30px;
+            border: 2px solid #c5a059;
+            margin-bottom: 8px;
+            object-fit: cover;
+        }
+        .team-name {
+            font-weight: bold;
+            color: #ffffff;
+            font-size: 10pt;
+            margin-bottom: 4px;
+        }
+        .team-role {
+            color: #c5a059;
+            font-size: 9pt;
+            font-style: italic;
+            margin-bottom: 6px;
+        }
+        .team-social {
+            color: #d0d0d0;
+            font-size: 8pt;
+            text-decoration: none;
+            background-color: #5c0a16;
+            padding: 2px 6px;
+            border-radius: 2px;
+        }
+    </style>
 </head>
-<body class="bg-slate-50 min-h-screen flex flex-col items-center justify-center p-4">
+<body>
 
-    <div class="max-w-md w-full bg-white rounded-2xl shadow-xl p-8 text-center" x-data="{ open: false }">
-        <div class="w-24 h-24 bg-blue-500 rounded-full mx-auto mb-4 flex items-center justify-center text-white text-3xl font-bold">JS</div>
-        <h1 class="text-2xl font-bold text-slate-800">Ing. en Software</h1>
-        <p class="text-slate-600 mt-2">Apasionado por la tecnología, la escalabilidad y el desarrollo de sistemas robustos. Estudiante de La Salle (Matrícula: 255746).</p>
-        
-        <button @click="open = true" class="mt-6 w-full bg-slate-800 text-white py-3 rounded-lg hover:bg-slate-700 transition font-semibold">
-            Ver Proyectos 3er Parcial
-        </button>
+    <h1>Modernización La Moderna</h1>
 
-        <div x-show="open" class="fixed inset-0 bg-black/50 flex items-center justify-center p-4" x-cloak>
-            <div @click.away="open = false" class="bg-white rounded-xl p-6 w-full max-w-sm shadow-2xl">
-                <h2 class="text-lg font-bold text-blue-600 mb-4">Programación orientada a Entornos visuales</h2>
-                <div class="space-y-3">
-                    <a href="/3erparcialtarea1.html" class="block w-full py-2 border rounded-lg hover:bg-blue-50">Tarea 1</a>
-                    <a href="/3erparcialtarea2.html" class="block w-full py-2 border rounded-lg hover:bg-blue-50">Tarea 2</a>
-                    <a href="/3erparcialexamenpractico.html" class="block w-full py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Examen Práctico</a>
-                </div>
-                <button @click="open = false" class="mt-4 text-sm text-slate-400">Cerrar</button>
+    <h2>1. Introducción</h2>
+    <p><span class="bold">Proyecto:</span> Modernización Digital de Vinatería La Moderna.</p>
+    <p><span class="bold">Objetivo:</span> Migración de un sistema monolítico local hacia un ecosistema web escalable en la nube.</p>
+    <p><span class="bold">Cliente:</span> Luis Ramírez.</p>
+
+    <div class="table-layout">
+        <div class="table-row">
+            <div class="table-cell">
+                <h2>2. Problemática y Justificación</h2>
+                <p><span class="bold">Problemática:</span></p>
+                <ul>
+                    <li><span class="accent">Ventas:</span> Carencia de e-commerce; mercado limitado.</li>
+                    <li><span class="accent">Inventario:</span> Conteo manual con alta tasa de error.</li>
+                    <li><span class="accent">Finanzas:</span> Cierres dependientes de tickets físicos.</li>
+                    <li><span class="accent">Seguridad:</span> Gestión de accesos no controlada.</li>
+                </ul>
+                <p><span class="bold">Justificación:</span></p>
+                <ul>
+                    <li>Captación de clientes mediante reservas web.</li>
+                    <li>Automatización directa del Punto de Venta (POS).</li>
+                    <li>Escalabilidad y auditoría de datos en la nube.</li>
+                </ul>
+            </div>
+            <div class="table-cell">
+                <h2>3. Puntos de mejora (Requerimientos)</h2>
+                <ul>
+                    <li><span class="bold">Catálogo de Reservas:</span> Portal interactivo 24/7 para apartados y optimización en mostrador.</li>
+                    <li><span class="bold">Motor de Recomendación:</span> Algoritmos basados en grafos para sugerir sustitutos en stock.</li>
+                    <li><span class="bold">Gestión de Roles:</span> Segregación estricta de permisos (Administrador, Empleado, Cliente).</li>
+                    <li><span class="bold">Dashboard Centralizado:</span> Control integrado de inventario y proveedores.</li>
+                </ul>
             </div>
         </div>
     </div>
 
-    <footer class="mt-8 text-slate-400 text-sm">
-        InnovateX 3er parcial
-    </footer>
+    <div class="table-layout">
+        <div class="table-row">
+            <div class="table-cell">
+                <h2>4. Arquitectura</h2>
+                <ul>
+                    <li><span class="bold">Frontend:</span> HTML5 + CSS3 (Estructurado y responsivo).</li>
+                    <li><span class="bold">Backend:</span> PHP (Patrón Modelo-Vista-Controlador).</li>
+                    <li><span class="bold">Persistencia:</span> MySQL (Integridad referencial).</li>
+                    <li><span class="bold">Infraestructura:</span> Cloud Web Hosting.</li>
+                </ul>
+            </div>
+            <div class="table-cell">
+                <h2>5. Grafo</h2>
+                <p><span class="bold">Definición:</span> Motor de recomendación visual (nodos y aristas) para sugerencias de sustitución.</p>
+                <ul>
+                    <li><span class="accent">Cervezas:</span> Corona ↔ Modelo (0.85).</li>
+                    <li><span class="accent">Tequilas:</span> Don Julio 70 ↔ Maestro Dobel (0.70).</li>
+                    <li><span class="accent">Vodkas:</span> Smirnoff ↔ Absolut (0.75).</li>
+                    <li><span class="accent">Rones:</span> Bacardí Blanco ↔ Añejo (0.60).</li>
+                </ul>
+            </div>
+        </div>
+    </div>
 
+    <div class="table-layout">
+        <div class="table-row">
+            <div class="table-cell">
+                <h2>6. Conclusión y Trabajo a corto plazo</h2>
+                <p><span class="bold">Conclusión:</span> La transición erradica la pérdida de registros, otorga ventaja competitiva sin altos costos de infraestructura y centraliza las decisiones empresariales.</p>
+                <p><span class="bold">Corto Plazo (Fase 2):</span> Migración a arquitectura React. Desacoplamiento de lógica e interfaz (SPA) y preparación para consumo de APIs.</p>
+            </div>
+            <div class="table-cell">
+                <h2>7. Escalabilidad</h2>
+                <ul>
+                    <li><span class="bold">App Móvil (Fase 3):</span> Versión iOS/Android nativa con notificaciones push.</li>
+                    <li><span class="bold">IA Avanzada (Fase 4):</span> Machine Learning para perfiles de recomendación.</li>
+                    <li><span class="bold">Multi-Sucursal (Fase 5):</span> Arquitectura multi-tenant para despliegue en franquicias.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <h2>8. Datos del equipo de trabajo</h2>
+    <div class="team-table">
+        <div class="team-row">
+            <div class="team-cell">
+                <img class="team-img" src="https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1779541568/WhatsApp_Image_2026-05-23_at_07.05.03_rbjyyw.jpg" alt="Juan">
+                <div class="team-name">Juan F. Hernández</div>
+                <div class="team-role">Scrum Master</div>
+                <a href="#" class="team-social">in</a>
+            </div>
+            <div class="team-cell">
+                <img class="team-img" src="https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1779541832/Picture2_r4qpke.jpg" alt="Diego">
+                <div class="team-name">Diego Domínguez</div>
+                <div class="team-role">Frontend Dev</div>
+                <a href="#" class="team-social">in</a>
+            </div>
+            <div class="team-cell">
+                <img class="team-img" src="https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1779541834/Picture3_y690dh.jpg" alt="Alan">
+                <div class="team-name">Alan Olaf Eligio</div>
+                <div class="team-role">QA & Graph Logic</div>
+                <a href="#" class="team-social">in</a>
+            </div>
+        </div>
+        <div class="team-row">
+            <div class="team-cell">
+                <img class="team-img" src="https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1779541565/WhatsApp_Image_2026-05-22_at_23.02.32_y2tylj.jpg" alt="Osmar">
+                <div class="team-name">Osmar Esquivel</div>
+                <div class="team-role">Frontend UI</div>
+                <a href="#" class="team-social">in</a>
+            </div>
+            <div class="team-cell">
+                <img class="team-img" src="https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1779541835/Picture4_dkzqxu.jpg" alt="Johan">
+                <div class="team-name">Johan Rodríguez</div>
+                <div class="team-role">Documentation</div>
+                <a href="#" class="team-social">in</a>
+            </div>
+            <div class="team-cell">
+                <img class="team-img" src="https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1779541567/WhatsApp_Image_2026-05-23_at_07.01.14_czo3bq.jpg" alt="Angel">
+                <div class="team-name">Angel J. Herrera</div>
+                <div class="team-role">Fullstack Dev</div>
+                <a href="#" class="team-social">in</a>
+            </div>
+        </div>
+        <div class="team-row">
+            <div class="team-cell">
+                <img class="team-img" src="https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1779541566/WhatsApp_Image_2026-05-22_at_23.33.47_tfigni.jpg" alt="Yahir">
+                <div class="team-name">Yahir González</div>
+                <div class="team-role">DBA</div>
+                <a href="#" class="team-social">in</a>
+            </div>
+            <div class="team-cell">
+                <div class="team-img" style="display:inline-block; line-height:60px; font-size:24px; background:#5c0a16;">JP</div>
+                <div class="team-name">Juan Pablo Coria</div>
+                <div class="team-role">DBA</div>
+                <a href="#" class="team-social">in</a>
+            </div>
+            <div class="team-cell">
+                <div class="team-img" style="display:inline-block; line-height:60px; font-size:24px; background:#5c0a16;">KL</div>
+                <div class="team-name">Karen López</div>
+                <div class="team-role">Technical Writer</div>
+                <a href="#" class="team-social">in</a>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
