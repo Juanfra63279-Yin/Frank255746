@@ -55,23 +55,27 @@ body{font-family:'Barlow',sans-serif;background:var(--cream);color:var(--charcoa
 .nav-links a:hover{color:var(--gold);background:rgba(255,255,255,.08)}
 .nav-cta{background:var(--gold)!important;color:var(--burgundy-dark)!important;font-weight:700!important;border-radius:3px!important}
 .nav-cta:hover{background:var(--gold-light)!important}
-/* Hamburger */
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+/* Hamburger — solo móvil */
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;z-index:9001}
 .hamburger span{display:block;width:24px;height:2px;background:var(--white);border-radius:2px;transition:.3s}
 .hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
 .hamburger.open span:nth-child(2){opacity:0}
 .hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+/* Menú desplegable móvil — oculto por defecto */
 .mobile-menu{
   display:none;position:fixed;top:var(--nav-h);left:0;right:0;z-index:8999;
-  background:var(--burgundy-dark);padding:20px 24px;flex-direction:column;gap:4px;
+  background:var(--burgundy-dark);padding:16px 20px 24px;flex-direction:column;gap:2px;
+  box-shadow:0 8px 24px rgba(0,0,0,.4);border-top:1px solid rgba(255,255,255,.08);
 }
 .mobile-menu.open{display:flex}
 .mobile-menu a{
   color:rgba(255,255,255,.85);text-decoration:none;
   font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:600;
   letter-spacing:1.5px;text-transform:uppercase;
-  padding:12px 16px;border-radius:3px;border-bottom:1px solid rgba(255,255,255,.07);
+  padding:13px 16px;border-radius:3px;border-bottom:1px solid rgba(255,255,255,.07);
+  transition:color .2s,background .2s;
 }
+.mobile-menu a:last-child{border-bottom:none;margin-top:6px;background:var(--gold);color:var(--burgundy-dark)!important;text-align:center;border-radius:3px;font-weight:700}
 .mobile-menu a:hover{color:var(--gold);background:rgba(255,255,255,.06)}
 
 /* ── HERO ───────────────────────────────────────── */
@@ -506,11 +510,11 @@ footer{background:var(--burgundy-dark);padding:40px 80px;display:flex;align-item
   </a>
   <ul class="nav-links">
     <li><a href="#problematica">Problemática</a></li>
-    <li><a href="#justificacion">Justificación</a></li>
+    <li><a href="#requerimientos">Requerimientos</a></li>
     <li><a href="#interfaces">Sistema</a></li>
     <li><a href="#arquitectura">Arquitectura</a></li>
-    <li><a href="#metodologia">SCRUM</a></li>
-    <li><a href="#conclusiones">Conclusiones</a></li>
+    <li><a href="#grafo">Grafo</a></li>
+    <li><a href="#conclusion">Conclusiones</a></li>
     <li><a href="#equipo">Equipo</a></li>
     <li><a href="http://vinaterialamoderna.infinityfreeapp.com/" target="_blank" class="nav-cta">Ver Sistema</a></li>
   </ul>
@@ -520,13 +524,13 @@ footer{background:var(--burgundy-dark);padding:40px 80px;display:flex;align-item
 </nav>
 <div class="mobile-menu" id="mobileMenu">
   <a href="#problematica" onclick="toggleMenu()">Problemática</a>
-  <a href="#justificacion" onclick="toggleMenu()">Justificación</a>
+  <a href="#requerimientos" onclick="toggleMenu()">Requerimientos</a>
   <a href="#interfaces" onclick="toggleMenu()">Sistema</a>
   <a href="#arquitectura" onclick="toggleMenu()">Arquitectura</a>
-  <a href="#metodologia" onclick="toggleMenu()">SCRUM</a>
-  <a href="#conclusiones" onclick="toggleMenu()">Conclusiones</a>
+  <a href="#grafo" onclick="toggleMenu()">Grafo</a>
+  <a href="#conclusion" onclick="toggleMenu()">Conclusiones</a>
   <a href="#equipo" onclick="toggleMenu()">Equipo</a>
-  <a href="http://vinaterialamoderna.infinityfreeapp.com/" target="_blank">Ver Sistema ↗</a>
+  <a href="http://vinaterialamoderna.infinityfreeapp.com/" target="_blank" onclick="toggleMenu()" style="color:var(--gold);font-weight:700">Ver Sistema ↗</a>
 </div>
 
 <!-- ─── HERO ─────────────────────────────────────── -->
@@ -581,7 +585,7 @@ footer{background:var(--burgundy-dark);padding:40px 80px;display:flex;align-item
 <section id="intro" class="section">
   <div class="container">
     <div class="reveal">
-      <div class="eyebrow">01 — Introducción <span style="margin-left:8px;background:var(--burgundy);color:var(--gold);padding:2px 10px;border-radius:2px;font-size:10px;letter-spacing:1px;">Frank</span></div>
+      <div class="eyebrow">01 — Introducción</div>
       <h2 class="section-title dark">Vinatería La Moderna:<br>El Reto de la Modernización</h2>
       <p class="section-lead">El equipo InnovateX fue contratado por Luis Ramírez, propietario de Vinatería La Moderna, para migrar su sistema operativo local a un ecosistema web completo, escalable y accesible desde la nube.</p>
     </div>
@@ -606,7 +610,7 @@ footer{background:var(--burgundy-dark);padding:40px 80px;display:flex;align-item
       </div>
       <div class="reveal reveal-d2">
         <div class="intro-img-wrap">
-          <img src="https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1779417085/Vinater%C3%ADa_La_Moderna_n3xvsj.png" alt="Logo Vinatería La Moderna">
+          <img src="https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1779540593/4ad3287d-8e96-474c-b172-7ccef49b0fae.png" alt="Imagen Ilustrativa">
         </div>
       </div>
     </div>
@@ -616,7 +620,7 @@ footer{background:var(--burgundy-dark);padding:40px 80px;display:flex;align-item
 <!-- ─── 02 PROBLEMÁTICA / JUSTIFICACIÓN ─── Osmar ── -->
 <section id="problematica" class="section section-cream">
         <div class="container">
-            <div class="section-eyebrow">Sección 02 — Ponente: Osmar</div>
+            <div class="eyebrow">Sección 02</div>
             <h2 class="section-title dark">Brechas Operativas y Justificación</h2>
             <p class="section-lead">
                 La dependencia de procesos locales ralentizaba el crecimiento comercial. A continuación se presentan los dolores críticos detectados en el análisis del negocio de licores y las soluciones integradas:
@@ -644,7 +648,7 @@ footer{background:var(--burgundy-dark);padding:40px 80px;display:flex;align-item
 <!-- ─── 03 REQUERIMIENTOS ─── Sam ────────────────── -->
     <section id="requerimientos" class="section section-dark">
         <div class="container">
-            <div class="section-eyebrow">Sección 03 — Ponente: Sam</div>
+            <div class="eyebrow">Sección 03</div>
             <h2 class="section-title light">Puntos de Mejora Técnicos</h2>
             <div class="req-grid">
                 <div>
@@ -659,8 +663,8 @@ footer{background:var(--burgundy-dark);padding:40px 80px;display:flex;align-item
                         <li>
                            	 <i class="fa-solid fa-network-wired"></i>
                             <div>
-                                <strong>Motor de Recomendación Inteligente</strong>
-                                <span>Uso de estructuras matemáticas de grafos para sugerir licores sustitutos con base en existencias de stock reales.</span>
+                                <strong>Seguridad de la Información</strong>
+                                <span>Bases de datos robustas en la nube reemplazan las bitácoras locales, previniendo pérdidas de registros irreemplazables.</span>
                             </div>
                         </li>
                         <li>
@@ -674,6 +678,7 @@ footer{background:var(--burgundy-dark);padding:40px 80px;display:flex;align-item
                 </div>
                 <div style="text-align: center;">
                     <div style="background: rgba(255,255,255,0.05); padding: 40px; border-radius: 4px; border: 1px solid var(--gold);">
+			<!--<img src="https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1779540593/4ad3287d-8e96-474c-b172-7ccef49b0fae.png" alt="Arqitectura Nube">-->
                         <i class="fa-solid fa-chart-line" style="font-size: 60px; color: var(--gold); margin-bottom: 15px;"></i>
                         <h3 style="font-family: 'Playfair Display', serif; margin-bottom: 10px;">Impacto Operativo</h3>
                         <p style="color: rgba(255,255,255,0.6); font-size: 14px;">Centralización absoluta de los registros, erradicando pérdidas documentales previas.</p>
@@ -689,7 +694,6 @@ footer{background:var(--burgundy-dark);padding:40px 80px;display:flex;align-item
   <div class="interfaces-header">
     <div class="reveal">
       <div class="eyebrow">Muestra del Sistema
-        <span style="margin-left:8px;background:var(--burgundy);color:var(--gold);padding:2px 10px;border-radius:2px;font-size:10px;letter-spacing:1px;">Coria · Diego · Jair</span>
       </div>
       <h2 class="section-title dark">Módulos de Interfaces<br>y Experiencia (UX)</h2>
       <p class="section-lead">Cada módulo fue diseñado con foco en la usabilidad del personal operativo y en la experiencia del cliente al reservar productos del catálogo.</p>
@@ -699,79 +703,66 @@ footer{background:var(--burgundy-dark);padding:40px 80px;display:flex;align-item
     <div class="carousel-track" id="carouselTrack">
 
       <div class="carousel-slide" onclick="openCarouselModal('https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1779548037/Captura_de_pantalla_2026-05-23_084002_ddl8yi.png','Login','Acceso seguro con autenticación de credenciales y redirección por roles del sistema.')">
-        <span class="slide-presenter">Diego · Frontend</span>
         <img src="https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1779548037/Captura_de_pantalla_2026-05-23_084002_ddl8yi.png" alt="Login">
         <div class="carousel-overlay"><h4>Login</h4><p>Acceso seguro con autenticación de credenciales y redirección por roles del sistema.</p></div>
       </div>
 
       <div class="carousel-slide" onclick="openCarouselModal('https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1779548038/Captura_de_pantalla_2026-05-23_084025_qpdls3.png','Registro de Usuario','Formulario para el registro de nuevos clientes, permitiendo apartar productos.')">
-        <span class="slide-presenter">Diego · Frontend</span>
         <img src="https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1779548038/Captura_de_pantalla_2026-05-23_084025_qpdls3.png" alt="Registro de Usuario">
         <div class="carousel-overlay"><h4>Registro de Usuario</h4><p>Formulario para el registro de nuevos clientes, permitiendo apartar productos.</p></div>
       </div>
 
       <div class="carousel-slide" onclick="openCarouselModal('https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1779548045/Captura_de_pantalla_2026-05-23_084332_ogcqp9.png','Panel Administrador','Dashboard centralizado para la gestión integral y visión global de la vinatería.')">
-        <span class="slide-presenter">Coria · Backend</span>
         <img src="https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1779548045/Captura_de_pantalla_2026-05-23_084332_ogcqp9.png" alt="Panel Administrador">
         <div class="carousel-overlay"><h4>Panel Administrador</h4><p>Dashboard centralizado para la gestión integral y visión global de la vinatería.</p></div>
       </div>
 
       <div class="carousel-slide" onclick="openCarouselModal('https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1779548048/Captura_de_pantalla_2026-05-23_084409_mu9gbx.png','Inventario','Control dinámico para altas de productos, control de precios y alertas de stock.')">
-        <span class="slide-presenter">Coria · Backend</span>
         <img src="https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1779548048/Captura_de_pantalla_2026-05-23_084409_mu9gbx.png" alt="Inventario">
         <div class="carousel-overlay"><h4>Inventario</h4><p>Control dinámico para altas de productos, control de precios y alertas de stock.</p></div>
       </div>
 
       <div class="carousel-slide" onclick="openCarouselModal('https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1779548057/Captura_de_pantalla_2026-05-23_084607_k7i1ew.png','Editar Vino','Interfaz de modificación detallada para actualizar los atributos de cada producto.')">
-        <span class="slide-presenter">Jair · Base de Datos</span>
         <img src="https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1779548057/Captura_de_pantalla_2026-05-23_084607_k7i1ew.png" alt="Editar Vino">
         <div class="carousel-overlay"><h4>Editar Vino</h4><p>Interfaz de modificación detallada para actualizar los atributos de cada producto.</p></div>
       </div>
 
       <div class="carousel-slide" onclick="openCarouselModal('https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1779548051/Captura_de_pantalla_2026-05-23_084443_c6tdli.png','Compras y Proveedores','Módulo administrativo para el seguimiento y control general del abastecimiento.')">
-        <span class="slide-presenter">Coria · Backend</span>
         <img src="https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1779548051/Captura_de_pantalla_2026-05-23_084443_c6tdli.png" alt="Compras y Proveedores">
         <div class="carousel-overlay"><h4>Compras y Proveedores</h4><p>Módulo administrativo para el seguimiento y control general del abastecimiento.</p></div>
       </div>
 
       <div class="carousel-slide" onclick="openCarouselModal('https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1779548059/Captura_de_pantalla_2026-05-23_084635_opqjsn.png','Registro Compra','Ingreso ordenado de nueva mercancía al inventario desde los proveedores.')">
-        <span class="slide-presenter">Coria · Backend</span>
         <img src="https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1779548059/Captura_de_pantalla_2026-05-23_084635_opqjsn.png" alt="Registro Compra">
         <div class="carousel-overlay"><h4>Registro Compra</h4><p>Ingreso ordenado de nueva mercancía al inventario desde los proveedores.</p></div>
       </div>
 
       <div class="carousel-slide" onclick="openCarouselModal('https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1779548060/Captura_de_pantalla_2026-05-23_084648_zv1g7c.png','Registrar Proveedor','Alta y gestión integral del directorio de proveedores comerciales autorizados.')">
-        <span class="slide-presenter">Jair · Base de Datos</span>
         <img src="https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1779548060/Captura_de_pantalla_2026-05-23_084648_zv1g7c.png" alt="Registrar Proveedor">
         <div class="carousel-overlay"><h4>Registrar Proveedor</h4><p>Alta y gestión integral del directorio de proveedores comerciales autorizados.</p></div>
       </div>
 
       <div class="carousel-slide" onclick="openCarouselModal('https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1779548055/Captura_de_pantalla_2026-05-23_084522_dkcara.png','Gestión Empleados','Asignación de roles y control estricto de la plantilla laboral con acceso al sistema.')">
-        <span class="slide-presenter">Coria · Backend</span>
         <img src="https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1779548055/Captura_de_pantalla_2026-05-23_084522_dkcara.png" alt="Gestión Empleados">
         <div class="carousel-overlay"><h4>Gestión Empleados</h4><p>Asignación de roles y control estricto de la plantilla laboral con acceso al sistema.</p></div>
       </div>
 
       <div class="carousel-slide" onclick="openCarouselModal('https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1779548053/Captura_de_pantalla_2026-05-23_084508_eauxen.png','Registro de Venta (POS)','Módulo de Punto de Venta para procesar reservaciones y facturar en mostrador.')">
-        <span class="slide-presenter">Coria · Backend</span>
         <img src="https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1779548053/Captura_de_pantalla_2026-05-23_084508_eauxen.png" alt="Registro de Venta">
         <div class="carousel-overlay"><h4>Registro de Venta (POS)</h4><p>Módulo de Punto de Venta para procesar reservaciones y facturar en mostrador.</p></div>
       </div>
 
       <div class="carousel-slide" onclick="openCarouselModal('https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1779548046/Captura_de_pantalla_2026-05-23_084352_j5yr3t.png','Detalle de Venta','Auditoría e historial de comprobantes para las transacciones finalizadas.')">
-        <span class="slide-presenter">Jair · Base de Datos</span>
         <img src="https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1779548046/Captura_de_pantalla_2026-05-23_084352_j5yr3t.png" alt="Detalle de Venta">
         <div class="carousel-overlay"><h4>Detalle de Venta</h4><p>Auditoría e historial de comprobantes para las transacciones finalizadas.</p></div>
       </div>
 
       <div class="carousel-slide" onclick="openCarouselModal('https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1779548041/Captura_de_pantalla_2026-05-23_084208_g7w2zd.png','Menú Cliente','Catálogo interactivo con los productos disponibles para reservas en línea.')">
-        <span class="slide-presenter">Diego · Frontend</span>
         <img src="https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1779548041/Captura_de_pantalla_2026-05-23_084208_g7w2zd.png" alt="Menú Cliente">
         <div class="carousel-overlay"><h4>Menú Cliente</h4><p>Catálogo interactivo con los productos disponibles para reservas en línea.</p></div>
       </div>
 
       <div class="carousel-slide" onclick="openCarouselModal('https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1779548042/Captura_de_pantalla_2026-05-23_084231_ryinrs.png','Carrito de Reserva','Selección de botellas apartadas por el cliente antes del pago presencial en sucursal.')">
-        <span class="slide-presenter">Diego · Frontend</span>
         <img src="https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1779548042/Captura_de_pantalla_2026-05-23_084231_ryinrs.png" alt="Carrito de Reserva">
         <div class="carousel-overlay"><h4>Carrito de Reserva</h4><p>Selección de botellas apartadas por el cliente antes del pago presencial en sucursal.</p></div>
       </div>
@@ -791,7 +782,7 @@ footer{background:var(--burgundy-dark);padding:40px 80px;display:flex;align-item
 <section id="arquitectura" class="section section-charcoal">
   <div class="container">
     <div class="reveal">
-      <div class="eyebrow">04 — Arquitectura <span style="margin-left:8px;background:rgba(197,160,89,.2);color:var(--gold);padding:2px 10px;border-radius:2px;font-size:10px;letter-spacing:1px;">Jared</span></div>
+      <div class="eyebrow">04 — Arquitectura</div>
       <h2 class="section-title light">Arquitectura General<br>del Sistema</h2>
       <p class="section-lead light">El sistema abandona el esquema local obsoleto para implementar una arquitectura MVC con tres capas tecnológicas bien definidas desplegadas en la nube.</p>
     </div>
@@ -841,9 +832,9 @@ footer{background:var(--burgundy-dark);padding:40px 80px;display:flex;align-item
   <div class="container">
     <div class="data-split">
       <div class="reveal">
-        <div class="eyebrow">05 — Grafo <span style="margin-left:8px;background:rgba(197,160,89,.2);color:var(--gold);padding:2px 10px;border-radius:2px;font-size:10px;letter-spacing:1px;">Olaf</span></div>
+        <div class="eyebrow">05 — Grafo</div>
         <h2 class="section-title light">Modelado por Grafos<br>de Sustitución</h2>
-        <p class="section-lead light">Motor de recomendaciones con matrices de adyacencia ponderadas. Los nodos son productos; las aristas definen grados de similitud. Si un licor está agotado, el sistema sugiere sustitutos directos de forma eficiente.</p>
+        <p class="section-lead light">Mediante el uso de matrices de adyacencia ponderadas, se modeló el catálogo de productos como una red interconectada. En esta estructura, cada producto representa un nodo y las conexiones entre ellos determinan su grado de similitud y co-ocurrencia en las compras.</p>
         <div class="grafo-legend">
           <div class="grafo-item">
             <div class="grafo-dot" style="background:#e74c3c"></div>
@@ -884,7 +875,7 @@ footer{background:var(--burgundy-dark);padding:40px 80px;display:flex;align-item
 <!-- ─── 07 CONCLUSIONES ─── Emmanuel ─────────────── -->
 <section id="conclusion" class="section section-wine">
         <div class="container">
-            <div class="section-eyebrow">Sección 06 — Ponente: Emmanuel</div>
+            <div class="eyebrow">Sección 06</div>
             <h2 class="section-title light">Conclusión y Trabajo Futuro</h2>
             <p class="section-lead light">
                 La transición ágil erradica las ineficiencias de control local, confiriendo una ventaja competitiva medible en el sector sin la necesidad de costos pesados de infraestructura para Vinatería La Moderna.
@@ -903,7 +894,7 @@ footer{background:var(--burgundy-dark);padding:40px 80px;display:flex;align-item
   <div class="container">
     <div style="display:grid;grid-template-columns:1fr 1.4fr;gap:80px;align-items:start" class="futuro-layout">
       <div class="reveal">
-        <div class="eyebrow">Trabajo Futuro — Escalabilidad <span style="margin-left:8px;background:rgba(197,160,89,.2);color:var(--gold);padding:2px 10px;border-radius:2px;font-size:10px;letter-spacing:1px;">Frank</span></div>
+        <div class="eyebrow">Trabajo Futuro — Escalabilidad </div>
         <h2 class="section-title light">Hoja de Ruta<br>del Sistema</h2>
         <p class="section-lead light">El sistema actual establece la base para una evolución progresiva hacia capacidades de mayor complejidad y alcance comercial.</p>
       </div>
@@ -937,46 +928,41 @@ footer{background:var(--burgundy-dark);padding:40px 80px;display:flex;align-item
 <section id="equipo" class="section section-charcoal">
   <div class="container">
     <div class="reveal">
-      <div class="eyebrow">08 — Datos del Equipo <span style="margin-left:8px;background:rgba(197,160,89,.2);color:var(--gold);padding:2px 10px;border-radius:2px;font-size:10px;letter-spacing:1px;">Frank</span></div>
+      <div class="eyebrow">08 — Datos del Equipo</div>
       <h2 class="section-title light">Equipo InnovateX</h2>
       <p class="section-lead light">9 ingenieros de La Salle Nezahualcóyotl trabajando bajo metodología SCRUM para transformar la operación digital de Vinatería La Moderna. Haz clic en cualquier miembro para ver su aportación y conectar en LinkedIn.</p>
     </div>
     <div class="team-full-grid">
 
       <div class="team-member reveal" onclick="openMemberModal('frank')">
-        <div class="presenter-badge">Teoría · Frank</div>
-        <img class="tm-avatar" src="https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1779541568/WhatsApp_Image_2026-05-23_at_07.05.03_rbjyyw.jpg" alt="Juan Francisco">
+        <img class="tm-avatar" src="https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1780892150/Frank-Foto_zr2oq7.png" alt="Frank">
         <div class="tm-name">Juan Francisco Hernández Muñiz</div>
         <div class="tm-role">Scrum Master</div>
         <div class="tm-open-hint"><i class="fa-solid fa-arrow-up-right-from-square"></i> Ver perfil</div>
       </div>
 
       <div class="team-member reveal reveal-d1" onclick="openMemberModal('osmar')">
-        <div class="presenter-badge">Teoría · Osmar</div>
-        <img class="tm-avatar" src="https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1779541565/WhatsApp_Image_2026-05-22_at_23.02.32_y2tylj.jpg" alt="Osmar">
+        <img class="tm-avatar" src="https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1780891557/Osmar-Foto_gfp22o.png" alt="Osmar">
         <div class="tm-name">Osmar Esquivel Ruiz</div>
         <div class="tm-role">Frontend UI</div>
         <div class="tm-open-hint"><i class="fa-solid fa-arrow-up-right-from-square"></i> Ver perfil</div>
       </div>
 
       <div class="team-member reveal reveal-d2" onclick="openMemberModal('karen')">
-        <div class="presenter-badge">Teoría · Sam</div>
-        <img class="tm-avatar" src="https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1779548046/Captura_de_pantalla_2026-05-23_084352_j5yr3t.png" alt="Karen" style="object-fit:cover;background:var(--burgundy)">
+        <img class="tm-avatar" src="https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1780891559/Karen-Foto_dw3wcv.png" alt="Karen" style="object-fit:cover;background:var(--burgundy)">
         <div class="tm-name">Karen Samantha López Cordero</div>
         <div class="tm-role">Technical Writer</div>
         <div class="tm-open-hint"><i class="fa-solid fa-arrow-up-right-from-square"></i> Ver perfil</div>
       </div>
 
       <div class="team-member reveal reveal-d3" onclick="openMemberModal('jared')">
-        <div class="presenter-badge">Teoría · Jared</div>
-        <img class="tm-avatar" src="https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1779541835/Picture4_dkzqxu.jpg" alt="Johan Jared">
+        <img class="tm-avatar" src="https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1780891550/Jared-Foto_ksktab.png" alt="Johan Jared">
         <div class="tm-name">Johan Jared Rodríguez Arredondo</div>
         <div class="tm-role">Documentación</div>
         <div class="tm-open-hint"><i class="fa-solid fa-arrow-up-right-from-square"></i> Ver perfil</div>
       </div>
 
       <div class="team-member reveal reveal-d4" onclick="openMemberModal('olaf')">
-        <div class="presenter-badge">Teoría · Olaf</div>
         <img class="tm-avatar" src="https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1779541834/Picture3_y690dh.jpg" alt="Alan Olaf">
         <div class="tm-name">Alan Olaf Eligio Herrera</div>
         <div class="tm-role">QA &amp; Graph Logic</div>
@@ -984,32 +970,28 @@ footer{background:var(--burgundy-dark);padding:40px 80px;display:flex;align-item
       </div>
 
       <div class="team-member reveal reveal-d5" onclick="openMemberModal('emmanuel')">
-        <div class="presenter-badge">Teoría · Emmanuel</div>
-        <img class="tm-avatar" src="https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1779541566/WhatsApp_Image_2026-05-22_at_23.33.47_tfigni.jpg" alt="Yahir">
+        <img class="tm-avatar" src="https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1780891556/Yahir-Foto_pvv50g.png" alt="Yahir">
         <div class="tm-name">Yahir Emmanuel González Olivares</div>
         <div class="tm-role">DBA</div>
         <div class="tm-open-hint"><i class="fa-solid fa-arrow-up-right-from-square"></i> Ver perfil</div>
       </div>
 
       <div class="team-member reveal reveal-d1" onclick="openMemberModal('coria')">
-        <div class="presenter-badge">Práctica · Coria</div>
-        <div class="tm-avatar-initials">JP</div>
+        <img class="tm-avatar" src="https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1780892717/Coria-Foto_vhtviv.png" alt="Coria">
         <div class="tm-name">Juan Pablo Coria Gutierrez</div>
         <div class="tm-role">Backend — DBA</div>
         <div class="tm-open-hint"><i class="fa-solid fa-arrow-up-right-from-square"></i> Ver perfil</div>
       </div>
 
       <div class="team-member reveal reveal-d2" onclick="openMemberModal('diego')">
-        <div class="presenter-badge">Práctica · Diego</div>
-        <img class="tm-avatar" src="https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1779541832/Picture2_r4qpke.jpg" alt="Diego">
+        <img class="tm-avatar" src="https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1780891556/Diego-Foto_t6ob23.png" alt="Diego">
         <div class="tm-name">Diego Alberto Domínguez Enríquez</div>
         <div class="tm-role">Frontend Dev</div>
         <div class="tm-open-hint"><i class="fa-solid fa-arrow-up-right-from-square"></i> Ver perfil</div>
       </div>
 
       <div class="team-member reveal reveal-d3" onclick="openMemberModal('jair')">
-        <div class="presenter-badge">Práctica · Jair</div>
-        <img class="tm-avatar" src="https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1779541567/WhatsApp_Image_2026-05-23_at_07.01.14_czo3bq.jpg" alt="Angel Jair">
+        <img class="tm-avatar" src="https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1780891557/Jair-Foto_h1ypnf.png" alt="Angel Jair">
         <div class="tm-name">Angel Jair Herrera Ayala</div>
         <div class="tm-role">Fullstack Dev</div>
         <div class="tm-open-hint"><i class="fa-solid fa-arrow-up-right-from-square"></i> Ver perfil</div>
@@ -1024,7 +1006,7 @@ footer{background:var(--burgundy-dark);padding:40px 80px;display:flex;align-item
   <div class="container">
     <div class="live-inner">
       <div class="reveal">
-        <div class="eyebrow">Demo en Vivo</div>
+        <div class="eyebrow">Demo</div>
         <h2 class="section-title dark">Sistema en Producción</h2>
         <p class="section-lead">El prototipo interactivo se encuentra desplegado para revisión de flujos y experiencia de usuario por el cliente Luis Ramírez.</p>
         <ul class="spec-list" style="margin-top:44px">
@@ -1033,7 +1015,7 @@ footer{background:var(--burgundy-dark);padding:40px 80px;display:flex;align-item
           <li><span class="spec-label">Cliente</span><span class="spec-value">Luis Ramírez</span></li>
           <li><span class="spec-label">Consultora</span><span class="spec-value">InnovateX · La Salle Neza</span></li>
           <li><span class="spec-label">Metodología</span><span class="spec-value">SCRUM Framework</span></li>
-          <li><span class="spec-label">Estado</span><span class="spec-value" style="color:green;font-weight:700">● En Producción</span></li>
+          <li><span class="spec-label">Estado</span><span class="spec-value" style="color:orange;font-weight:700">● En Revisión</span></li>
         </ul>
       </div>
       <div class="reveal reveal-d2" style="display:flex;flex-direction:column;align-items:center;gap:32px">
@@ -1064,6 +1046,7 @@ footer{background:var(--burgundy-dark);padding:40px 80px;display:flex;align-item
     <div class="reveal">
       <h2>Documentación Completa del Proyecto</h2>
       <p>Accede al documento oficial con documentación de soporte técnico, evidencias de sprints, diagramas UML, modelo de datos y presentaciones de InnovateX.</p>
+      <p>Este codigo qr solo sera habilitado de 9:20 a 10:15am del 08 de junio del 2026.</p>
       <a href="https://vinaterialamoderna.infinityfreeapp.com/presentacion/Documentacion.pdf" target="_blank" class="btn-primary" style="margin-top:28px;display:inline-flex;background:var(--burgundy);color:var(--white)">
         <i class="fa-solid fa-file-pdf"></i> Abrir Documentación PDF
       </a>
@@ -1084,8 +1067,8 @@ footer{background:var(--burgundy-dark);padding:40px 80px;display:flex;align-item
 </footer>
 
 <!-- QR Flotante -->
-<div class="qr-flotante" onclick="window.open('https://github.com/Juanfra63279-Yin/Frank255746','_blank')" title="Ver Precentacion en Vivo">
-  <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://github.com/Juanfra63279-Yin/Frank255746" alt="QR">
+<div class="qr-flotante" onclick="window.open('https://juanfra63279-yin.github.io/Frank255746/','_blank')" title="Ver Precentacion en Vivo">
+  <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://juanfra63279-yin.github.io/Frank255746/" alt="QR">
   <span>Ver Sistema</span>
 </div>
 
@@ -1126,7 +1109,7 @@ footer{background:var(--burgundy-dark);padding:40px 80px;display:flex;align-item
       <img id="mEqQR" src="" alt="QR LinkedIn">
       <div class="meq-qr-text">
         <strong>Conectar en LinkedIn</strong>
-        <a href="https://www.linkedin.com/" target="_blank" rel="noopener">
+        <a id="mEqLinkedInLink" href="https://www.linkedin.com/" target="_blank" rel="noopener">
           <i class="fa-brands fa-linkedin"></i> Abrir LinkedIn
         </a>
         <span style="display:block;margin-top:6px;font-size:11px;color:rgba(255,255,255,.35)">Escanea el QR o haz clic</span>
@@ -1175,15 +1158,15 @@ function openModal(id) { document.getElementById(id).classList.add('activo'); }
 function closeModal(id) { document.getElementById(id).classList.remove('activo'); }
 function openMemberModal(id) {
   const members = {
-    frank:     { nombre:'Juan Francisco Hernández Muñiz', rol:'Scrum Master & Project Manager', desc:'Liderazgo metodológico de los 4 sprints SCRUM: asignó tareas estratégicamente según especialización, mantuvo el backlog actualizado, facilitó las daily stand-ups y aseguró la entrega iterativa coherente con las reglas de negocio del cliente Luis Ramírez. Responsable de la presentación teórica de introducción y escalabilidad.', foto:'https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1779541568/WhatsApp_Image_2026-05-23_at_07.05.03_rbjyyw.jpg', initials:null },
-    osmar:     { nombre:'Osmar Esquivel Ruiz', rol:'Frontend UI Developer', desc:'Construcción de todos los componentes visuales de la interfaz de usuario: estructuración semántica en HTML5, optimización y estilización avanzada en CSS3, garantizando la coherencia visual del catálogo y la responsividad adaptativa en todos los dispositivos. Ponente de la sección de problemática y justificación.', foto:'https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1779541565/WhatsApp_Image_2026-05-22_at_23.02.32_y2tylj.jpg', initials:null },
-    karen:     { nombre:'Karen Samantha López Cordero', rol:'Technical Writer — Especialista en Diccionario de Datos', desc:'Documentación técnica especializada: elaboró el diccionario de datos completo con mapeo de atributos, tipos de dato, restricciones NOT NULL y relaciones clave. Validó la coherencia entre la arquitectura física de MySQL y el diseño lógico E/R. Ponente de la sección de requerimientos del sistema.', foto:'https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1779548046/Captura_de_pantalla_2026-05-23_084352_j5yr3t.png', initials:null },
-    jared:     { nombre:'Johan Jared Rodríguez Arredondo', rol:'Documentación Técnica & Redacción', desc:'Investigación, síntesis y redacción del documento oficial del proyecto: diagramas UML, evidencias de sprints, casos de uso y justificación del stack tecnológico. Aseguró la coherencia técnica entre los entregables escritos y el software desarrollado. Ponente de la arquitectura general del sistema.', foto:'https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1779541835/Picture4_dkzqxu.jpg', initials:null },
-    olaf:      { nombre:'Alan Olaf Eligio Herrera', rol:'QA & Graph Logic Developer', desc:'Conducción de entrevistas con stakeholders para levantamiento de requerimientos no funcionales. Diseñó el motor de recomendaciones por grafos mediante matrices de adyacencia ponderadas en Wolfram Mathematica, modelando las relaciones de sustitución entre productos de la vinatería. Ponente de la sección de grafos computacionales.', foto:'https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1779541834/Picture3_y690dh.jpg', initials:null },
-    emmanuel:  { nombre:'Yahir Emmanuel González Olivares', rol:'Database Administrator (DBA)', desc:'Diseño conceptual y lógico del modelo Entidad-Relación (E/R) y desarrollo del código SQL/DDL completo para la creación e implementación de la base de datos MySQL en el servidor remoto. Estableció las restricciones de integridad referencial, índices y umbrales de stock mínimo. Ponente de la sección de conclusiones y trabajo futuro.', foto:'https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1779541566/WhatsApp_Image_2026-05-22_at_23.33.47_tfigni.jpg', initials:null },
-    coria:     { nombre:'Juan Pablo Coria Gutierrez', rol:'Backend Developer — DBA', desc:'Levantamiento de requerimientos funcionales, análisis de viabilidad técnica y definición del alcance del proyecto junto con el cliente. Desarrolló la lógica del Módulo Administrador en PHP bajo patrón MVC, incluyendo autenticación de sesiones, control de roles y reportes de cortes de caja. Presentador del Módulo Administrador en la demo práctica.', foto:null, initials:'JP' },
-    diego:     { nombre:'Diego Alberto Domínguez Enríquez', rol:'Frontend Developer', desc:'Maquetación y diseño visual de todas las interfaces del sistema: paleta de colores, tipografía, componentes de carrito y catálogo interactivo. Responsable del diseño UX/UI del Módulo Cliente, garantizando una experiencia fluida para el usuario final en el proceso de reserva de productos. Presentador del Módulo Cliente en la demo práctica.', foto:'https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1779541832/Picture2_r4qpke.jpg', initials:null },
-    jair:      { nombre:'Angel Jair Herrera Ayala', rol:'Fullstack Developer', desc:'Arquitectura de la lógica de negocio del servidor: integración completa de servicios PHP con la base de datos MySQL, gestión de sesiones, validación de formularios y ruteo de controladores MVC. Presentó la integración de la Base de Datos con funcionalidad reflejada en tiempo real durante la demo práctica del sistema.', foto:'https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1779541567/WhatsApp_Image_2026-05-23_at_07.01.14_czo3bq.jpg', initials:null },
+    frank:     { nombre:'Juan Francisco Hernández Muñiz', rol:'Scrum Master & Project Manager', desc:'Liderazgo metodológico de los 4 sprints SCRUM: asignó tareas estratégicamente según especialización, mantuvo el backlog actualizado, facilitó las daily stand-ups y aseguró la entrega iterativa coherente con las reglas de negocio del cliente Luis Ramírez. Responsable de la presentación teórica de introducción y escalabilidad.', foto:'https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1780892150/Frank-Foto_zr2oq7.png', initials:null, linkedin:'https://www.linkedin.com/in/https://www.linkedin.com/in/frank255746' },
+    osmar:     { nombre:'Osmar Esquivel Ruiz', rol:'Frontend UI Developer', desc:'Construcción de todos los componentes visuales de la interfaz de usuario: estructuración semántica en HTML5, optimización y estilización avanzada en CSS3, garantizando la coherencia visual del catálogo y la responsividad adaptativa en todos los dispositivos. Ponente de la sección de problemática y justificación.', foto:'https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1780891557/Osmar-Foto_gfp22o.png', initials:null, linkedin:'' },
+    karen:     { nombre:'Karen Samantha López Cordero', rol:'Technical Writer — Especialista en Diccionario de Datos', desc:'Documentación técnica especializada: elaboró el diccionario de datos completo con mapeo de atributos, tipos de dato, restricciones NOT NULL y relaciones clave. Validó la coherencia entre la arquitectura física de MySQL y el diseño lógico E/R. Ponente de la sección de requerimientos del sistema.', foto:'https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1780891559/Karen-Foto_dw3wcv.png', initials:null, linkedin:'https://www.linkedin.com/in/samantha-cordero-729b09414' },
+    jared:     { nombre:'Johan Jared Rodríguez Arredondo', rol:'Documentación Técnica & Redacción', desc:'Investigación, síntesis y redacción del documento oficial del proyecto: diagramas UML, evidencias de sprints, casos de uso y justificación del stack tecnológico. Aseguró la coherencia técnica entre los entregables escritos y el software desarrollado. Ponente de la arquitectura general del sistema.', foto:'https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1780891550/Jared-Foto_ksktab.png', initials:null, linkedin:'https://www.linkedin.com/in/jared-arredondo-5b1a82414/' },
+    olaf:      { nombre:'Alan Olaf Eligio Herrera', rol:'QA & Graph Logic Developer', desc:'Conducción de entrevistas con stakeholders para levantamiento de requerimientos no funcionales. Diseñó el motor de recomendaciones por grafos mediante matrices de adyacencia ponderadas en Wolfram Mathematica, modelando las relaciones de sustitución entre productos de la vinatería. Ponente de la sección de grafos computacionales.', foto:'https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1779541834/Picture3_y690dh.jpg', initials:null, linkedin:'' },
+    emmanuel:  { nombre:'Yahir Emmanuel González Olivares', rol:'Database Administrator (DBA)', desc:'Diseño conceptual y lógico del modelo Entidad-Relación (E/R) y desarrollo del código SQL/DDL completo para la creación e implementación de la base de datos MySQL en el servidor remoto. Estableció las restricciones de integridad referencial, índices y umbrales de stock mínimo. Ponente de la sección de conclusiones y trabajo futuro.', foto:'https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1780891556/Yahir-Foto_pvv50g.png', initials:null, linkedin:'' },
+    coria:     { nombre:'Juan Pablo Coria Gutierrez', rol:'Backend Developer — DBA', desc:'Levantamiento de requerimientos funcionales, análisis de viabilidad técnica y definición del alcance del proyecto junto con el cliente. Desarrolló la lógica del Módulo Administrador en PHP bajo patrón MVC, incluyendo autenticación de sesiones, control de roles y reportes de cortes de caja. Presentador del Módulo Administrador en la demo práctica.', foto:'https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1780892717/Coria-Foto_vhtviv.png',initials:'JP', linkedin:'https://www.linkedin.com/in/pablo-coria-2b2b0b414' },
+    diego:     { nombre:'Diego Alberto Domínguez Enríquez', rol:'Frontend Developer', desc:'Maquetación y diseño visual de todas las interfaces del sistema: paleta de colores, tipografía, componentes de carrito y catálogo interactivo. Responsable del diseño UX/UI del Módulo Cliente, garantizando una experiencia fluida para el usuario final en el proceso de reserva de productos. Presentador del Módulo Cliente en la demo práctica.', foto:'https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1780891556/Diego-Foto_t6ob23.png', initials:null, linkedin:'' },
+    jair:      { nombre:'Angel Jair Herrera Ayala', rol:'Fullstack Developer', desc:'Arquitectura de la lógica de negocio del servidor: integración completa de servicios PHP con la base de datos MySQL, gestión de sesiones, validación de formularios y ruteo de controladores MVC. Presentó la integración de la Base de Datos con funcionalidad reflejada en tiempo real durante la demo práctica del sistema.', foto:'https://res.cloudinary.com/dhcwmbzso/image/upload/q_auto/f_auto/v1780891557/Jair-Foto_h1ypnf.png', initials:null, linkedin:'https://www.linkedin.com/in/angel-herrera-2479303a8' },
   };
   const m = members[id]; if(!m) return;
   document.getElementById('mEqNombre').innerText = m.nombre;
@@ -1195,8 +1178,9 @@ function openMemberModal(id) {
   } else {
     wrap.innerHTML = `<div class="meq-initials">${m.initials}</div>`;
   }
-  const qrUrl = encodeURIComponent('https://www.linkedin.com/');
+  const qrUrl = encodeURIComponent(m.linkedin);
   document.getElementById('mEqQR').src = `https://api.qrserver.com/v1/create-qr-code/?size=90x90&data=${qrUrl}&bgcolor=1a1a1a&color=c5a059`;
+  document.getElementById('mEqLinkedInLink').href = m.linkedin;
   openModal('modalEquipo');
 }
 function openTeamModal(nombre, rol, desc, foto) {
